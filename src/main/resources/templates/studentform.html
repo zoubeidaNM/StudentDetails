@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Student Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- adding fonts to website to make it more attractive. Use google fonts bt referencing the css on the Google Fonts APIs CDN-->
+    <link href="https://fonts.googleapis.com/css?family=Rozha+One|Roboto" rel="stylesheet"/>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+
+<body class="bg">
+<!-- collapsable navbar begin -->
+<nav class="navbar navbar-default roboto">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Student's Details</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li ><a href="/add">Add</a></li>
+                <li ><a href="/">Show All</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!-- collapsable navbar end -->
+
+<div class="container">
+    <form action="#" th:action="@{/process}" th:object="${student}" method="post" class="form2_bg">
+        <h2>Student Form: </h2>
+        <input type="hidden" th:field="*{id}"/>
+        <div class="row inputst">
+            <label class="col-md-3 labelst"> First Name :</label>
+            <input type="text" class="col-md-6" th:field="*{firstName}" placeholder="Enter student's first name"/>
+            <span class="col-md-3" th:if="${#fields.hasErrors('firstName')}"
+                  th:errors="*{firstName}"></span><br/>
+        </div>
+        <div class="row inputst">
+            <label class="col-md-3 labelst"> Last Name :</label>
+            <input type="text" class="col-md-6" th:field="*{lastName}" placeholder="Enter student's last name"/>
+            <span class="col-md-3" th:if="${#fields.hasErrors('lastName')}"
+                  th:errors="*{lastName}"></span><br/>
+        </div>
+        <div class="row inputst">
+            <label class="col-md-3 labelst">Email :</label>
+            <input type="text" class="col-md-6" th:field="*{email}" placeholder="Enter student's email"/>
+            <span class="col-md-3" th:if="${#fields.hasErrors('email')}"
+                  th:errors="*{email}"></span><br/>
+        </div>
+        <div class="row inputst">
+            <label class="col-md-3 labelst">Contact Number :</label>
+            <input type="text" pattern="[0-9]{10}" title="only numbers" class="col-md-6" th:field="*{contactNumber}" placeholder="Enter student's contact number"/>
+            <span class="col-md-3" th:if="${#fields.hasErrors('contactNumber')}"
+                  th:errors="*{contactNumber}"></span><br/>
+        </div>
+        <div class="row inputst">
+            <label class="col-md-3 labelst">Mailing Address :</label>
+            <div class="form-group col-md-6">
+                <textarea row="3" class="col-md-6" th:field="*{mailingAddress}" placeholder="Enter student's mailing address"/>
+                <span class="col-md-3" th:if="${#fields.hasErrors('mailingAddress')}"
+                      th:errors="*{mailingAddress}"></span><br/>
+            </div>
+            <span class="col-md-3"></span>
+        </div>
+        <br/>
+        <div class="col-md-12">
+            <input class="submitst" type="submit" value="Submit"/>
+        </div>
+    </form>
+</div>
+<!-- Latest compiled and minified JavaScript form jquery and the bootstrap-->
+<script
+        src="http://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>
